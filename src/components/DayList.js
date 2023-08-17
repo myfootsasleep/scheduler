@@ -2,7 +2,7 @@ import React from "react";
 import DayListItem from "./DayListItem";
 
 export default function DayList(props){
-
+console.log(props, "from dayList")
   return(
     <ul>
       {props.days.map((day) => (
