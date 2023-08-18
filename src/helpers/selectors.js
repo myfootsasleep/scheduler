@@ -28,3 +28,15 @@ export function getInterview(state, interviewer) {
     },
   };
 }
+
+export function getInterviewersByDay(state, day){
+  const selectedDay = state.days.find((d) => d.name === day);
+  if(!selectedDay){
+    return [];
+  }
+  const interviewers = selectedDay.interviewers.map(
+    (interviewerId) => state.interviewers[interviewerId]
+  );
+  //console.log(appointments, "fom getAppfunc")
+  return interviewers;
+}
