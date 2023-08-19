@@ -35,7 +35,6 @@ export default function Application(props) {
   const interviewers = getInterviewersByDay(state, state.day);
   //Book Interview Function
   function bookInterview(id, interview) {
-    console.log(id, interview);
     const appointment = {
       ...state.appointments[id],
       interview: { ...interview },
@@ -51,7 +50,30 @@ export default function Application(props) {
       });
     });
   }
-
+  function cancelInterview(id) {
+    const appointment = {
+      ...state.appointments[id],
+      interview: null,
+    };
+  
+    const appointments = {
+      ...state.appointments,
+      [id]: appointment,
+    };
+  
+    return axios
+      .delete(`/api/appointments/${id}`)
+      .then(() => {
+        console.log("testing to see if deletion was successful in cancelInterview")
+        setState({
+          ...state,
+          appointments,
+        });
+      })
+      .catch((error) => {
+        // Handle any errors that occur during the cancellation process
+      });
+  }
   const schedule = appoint.map((appointment) => {
     const interview = getInterview(state, appointment.interview);
 
@@ -63,6 +85,7 @@ export default function Application(props) {
         interview={interview}
         interviewers={interviewers}
         bookInterview={bookInterview}
+        cancelInterview={cancelInterview}
       />
     );
   });
