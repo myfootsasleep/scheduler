@@ -16,6 +16,7 @@ const CREATE = "CREATE";
 const SAVING = "SAVING";
 const DELETING = "DELETING";
 const CONFIRMING = "CONFIRMING"
+const EDITING = "EDITING"
 
 
 const Appointment = (props) => {
@@ -31,6 +32,7 @@ const Appointment = (props) => {
     };
     transition(SAVING);
     props.bookInterview(props.id, interview).then(() => {
+      console.log(props.id, "props id from bookInt", interview, "from bookInterview")
       transition(SHOW);
     });
   }
@@ -53,6 +55,7 @@ const Appointment = (props) => {
           student={props.interview.student}
           interviewer={props.interview.interviewer}
           onDelete={()=> transition(CONFIRMING)}
+          onEdit={()=>transition(EDITING)}
         />
       )}
       {mode === CREATE && (
@@ -61,6 +64,7 @@ const Appointment = (props) => {
       {mode === SAVING && <Status message = "Saving"/>}
       {mode === DELETING && <Status message = "Deleting"/>}
       {mode === CONFIRMING && <Confirm message = "Are you sure you want to Delete?" onCancel = {()=> transition(SHOW)} onConfirm = {onDelete}/>}
+      {mode === EDITING && <Form interviewers={props.interviewers} interviewer= {props.interview.interviewer.id} student={props.interview.student} onCancel = {()=>transition(SHOW)} onSave ={save}/>}
     </div>
   );
 };
