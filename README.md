@@ -1,6 +1,6 @@
 # Interview Scheduler
 
-!["Gif of Function"](https://github.com/myfootsasleep/scheduler/blob/master/docs/Scheduler%20Test.mp4)
+!["Gif of Function"](https://github.com/myfootsasleep/scheduler/blob/master/docs/Scheduler%20Test.gif)
 
 ## About The App
 
