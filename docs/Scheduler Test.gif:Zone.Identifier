@@ -1,0 +1,4 @@
+[ZoneTransfer]
+ZoneId=3
+ReferrerUrl=https://cloudconvert.com/
+HostUrl=https://storage.cloudconvert.com/tasks/18a79501-836b-4f14-bb61-effb570fa272/Scheduler%20Test.gif?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Credential=cloudconvert-production%2F20230826%2Ffra%2Fs3%2Faws4_request&X-Amz-Date=20230826T205433Z&X-Amz-Expires=86400&X-Amz-Signature=08054021156d42473fadaba7ff534e57872847f1700c75a0c5b07fa33ea56dac&X-Amz-SignedHeaders=host&response-content-disposition=attachment%3B%20filename%3D%22Scheduler%20Test.gif%22&response-content-type=image%2Fgif&x-id=GetObject

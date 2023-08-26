@@ -2,6 +2,12 @@
 
 !["Gif of Function"](https://github.com/myfootsasleep/scheduler/blob/master/docs/Scheduler%20Test.mp4)
 
+## About The App
+
+This is an app that can create, edit, and delete interviews. You can type in your name, and select a interviewer by clicking empty time slots. 
+
+
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -23,6 +29,3 @@ npm test
 ```sh
 npm run storybook
 ```
-## About The App
-
-This is an app that can create, edit, and delete interviews. You can type in your name, and select a interviewer by clicking empty time slots. 
