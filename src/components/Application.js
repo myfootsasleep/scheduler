@@ -1,82 +1,23 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import DayList from "./DayList";
 import "components/Application.scss";
 import Appointment from "components/Appointment";
+import useApplicationData from "hooks/useApplicationData";
 import {
   getAppointmentsForDay,
   getInterview,
   getInterviewersByDay,
 } from "helpers/selectors";
-import axios from "axios";
+
 
 export default function Application(props) {
-  const [state, setState] = useState({
-    day: "Monday",
-    days: [],
-    appointments: {},
-    interviewers: {},
-  });
-
-  useEffect(() => {
-    Promise.all([
-      axios.get("/api/days"),
-      axios.get("/api/appointments"),
-      axios.get("/api/interviewers"),
-    ]).then((all) => {
-      setState((prevState) => ({
-        ...prevState,
-        days: all[0].data,
-        appointments: all[1].data,
-        interviewers: all[2].data,
-      }));
-    });
-  }, []);
-  const appoint = getAppointmentsForDay(state, state.day);
+  const {state, setDay, bookInterview, cancelInterview} = useApplicationData();
   const interviewers = getInterviewersByDay(state, state.day);
-  //Book Interview Function
-  function bookInterview(id, interview) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: { ...interview },
-    };
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-    return axios.put(`/api/appointments/${id}`, { interview }).then(() => {
-      setState({
-        ...state,
-        appointments,
-      });
-    });
-  }
-  function cancelInterview(id) {
-    const appointment = {
-      ...state.appointments[id],
-      interview: null,
-    };
-  
-    const appointments = {
-      ...state.appointments,
-      [id]: appointment,
-    };
-  
-    return axios
-      .delete(`/api/appointments/${id}`)
-      .then(() => {
-        console.log("testing to see if deletion was successful in cancelInterview")
-        setState({
-          ...state,
-          appointments,
-        });
-      })
-      .catch((error) => {
-        // Handle any errors that occur during the cancellation process
-      });
-  }
-  const schedule = appoint.map((appointment) => {
-    const interview = getInterview(state, appointment.interview);
+  const appoint = getAppointmentsForDay(state, state.day);
 
+  const schedule = appoint.map((appointment) => {
+  const interview = getInterview(state, appointment.interview);
+   
     return (
       <Appointment
         key={appointment.id}
@@ -102,7 +43,8 @@ export default function Application(props) {
           <DayList
             days={state.days}
             value={state.day}
-            onChange={(day) => setState({ ...state, day })}
+            //onChange={(day) => setState({ ...state, day })}
+            setDay={setDay}
           />
         </nav>
         <img
