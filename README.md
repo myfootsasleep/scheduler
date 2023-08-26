@@ -6,6 +6,10 @@
 
 This is an app that can create, edit, and delete interviews. You can type in your name, and select a interviewer by clicking empty time slots. 
 
+## Project Features
+
+<li>Appointment by days is listed Monday to Friday with remaining spots available displayed</li>
+<li>If there are no more spots available the hover will display a different shade</li>
 
 
 ## Setup
