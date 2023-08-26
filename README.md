@@ -1,5 +1,7 @@
 # Interview Scheduler
 
+!["Gif of Function"](docs/Scheduler Test.mp4)
+
 ## Setup
 
 Install dependencies with `npm install`.
@@ -21,3 +23,6 @@ npm test
 ```sh
 npm run storybook
 ```
+## About The App
+
+This is an app that can create, edit, and delete interviews. You can type in your name, and select a interviewer by clicking empty time slots. 
