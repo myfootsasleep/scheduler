@@ -37,7 +37,7 @@ const Appointment = (props) => {
     props
       .bookInterview(props.id, interview)
       .then(() => transition(SHOW))
-      .catch((error) => transition(ERROR_SAVE, true));
+      .catch(() => transition(ERROR_SAVE, true));
   }
   function onDelete() {
     transition(DELETING, true);
