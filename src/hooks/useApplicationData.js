@@ -80,9 +80,6 @@ export default function useApplicationData() {
           days,
         });
       })
-      .catch((error) => {
-        // Handle any errors that occur during the cancellation process
-      });
   }
   return { state, setDay, bookInterview, cancelInterview };
 }
